@@ -67,6 +67,15 @@
 #define SCL_OUT         PORTB
 #define SDA_IN          PINB
 #define SCL_IN          PINB
+#elif __AVR_AT90USB1286__
+#define SDA             PB2        // SDA pin
+#define SCL             PB1        // SCL pin
+#define SDA_DDR         DDRB
+#define SCL_DDR         DDRB
+#define SDA_OUT         PORTB
+#define SCL_OUT         PORTB
+#define SDA_IN          PINB
+#define SCL_IN          PINB
 #else
 #error Unsupported processor
 #endif

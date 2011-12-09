@@ -42,10 +42,11 @@ CFLAGS += -Os -mmcu=$(MCU) -Wall -DF_CPU=$(F_CPU) -DF_CLOCK=$(F_CLOCK)
 CFLAGS += -funsigned-char
 CFLAGS += -funsigned-bitfields
 CFLAGS += -ffunction-sections
+CFLAGS += -std=c99
 CFLAGS += -fdata-sections
 CFLAGS += -fpack-struct
 CFLAGS += -fshort-enums
-CFLAGS += --param inline-call-cost=2  
+#CFLAGS += --param inline-call-cost=2  
 CFLAGS += -finline-limit=3 
 CFLAGS += -fno-inline-small-functions 
 CFLAGS += -Wall -Werror

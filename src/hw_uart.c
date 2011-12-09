@@ -36,6 +36,12 @@ void hw_uart_tick(void)
         uint8_t c = UDR1;
         console_rx_callback(c);
     }
+#elif __AVR_AT90USB1286__
+    if ((UCSR1A&(1<<RXC1)) != 0)
+    {
+        uint8_t c = UDR1;
+        console_rx_callback(c);
+    }
 #else
 #error Unsupported device, FIXME
 #endif
@@ -49,6 +55,10 @@ void hw_uart_putc(char c)
         watchdog_reset();
     UDR0 = c;
 #elif __AVR_AT90USB162__
+    while (bit_is_clear(UCSR1A, UDRE1))
+        watchdog_reset();
+    UDR1 = c;
+#elif __AVR_AT90USB1286__
     while (bit_is_clear(UCSR1A, UDRE1))
         watchdog_reset();
     UDR1 = c;
